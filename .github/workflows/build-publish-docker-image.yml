@@ -6,6 +6,10 @@ on:
     - '**'
     branches:
     - main
+    
+env:
+  project: 'zynomi-ui-web'
+  NAME   : 'zynomi/zynomi-ui-web'
 
 jobs:
   docker:
@@ -34,11 +38,21 @@ jobs:
           echo "Branch: ${{ steps.vars.outputs.branch }}"
           echo "Sha: ${{ steps.vars.outputs.sha_short }}"
 
+      #- name: Build and push
+       # uses: docker/build-push-action@v2
+        #with:
+         # context: .
+          #platforms: linux/amd64,linux/arm64,linux/arm/v7
+          #push: true
+          #tags: latest,${{ steps.vars.outputs.sha_short }}
+          ##tags: ${{ secrets.DOCKERHUB_USERNAME }}/ranking:${{ steps.vars.outputs.tag }}
+      
       - name: Build and push
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
-          push: true
+          platforms: linux/arm64
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{env.NAME}}
           tags: latest,${{ steps.vars.outputs.sha_short }}
-          #tags: ${{ secrets.DOCKERHUB_USERNAME }}/ranking:${{ steps.vars.outputs.tag }}
