@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3000:3000"
+      - "5000:3000"
     environment:
       - REST_ENDPOINT="http://localhost:8000/api"
       - API_KEY=
