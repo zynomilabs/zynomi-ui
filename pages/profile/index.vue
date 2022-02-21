@@ -47,7 +47,7 @@
  */
 import LeftNavBar from "@/components/LeftNavBar.vue";
 import LeftNavProfileBar from "@/components/LeftNavProfileBar.vue";
-import PageHeader from "@/components/pageheader.vue";
+import PageHeader from "@/components/PageHeader.vue";
 
 export default {
   layout: "app",
