@@ -101,6 +101,9 @@
 
                                     <div class="mt-6">
                                         <button
+                                            @click="signIn()"
+                                            id="btnSignIn"
+                                            name="btnSignIn"
                                             type="submit"
                                             class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out"
                                         >
@@ -164,8 +167,7 @@
 </template>
 
 <script>
-import store from "../vuex/store";
-import FeatureGrid from "@/components/landing/feature-grid.vue";
+import FeatureGrid from "@/components/feature-grid.vue";
 import menuitems from "@/store/siteconfig.json";
 export default {
   components: {
@@ -182,26 +184,9 @@ export default {
   },
   methods: {
     // Method to authenticate user
-    async login() {
+    signIn() {
       try {
-        //Temporary code (start)
-
-        //Temporary code (end)
-        store
-          .dispatch("login", {
-            email: this.email,
-            hashed_password: this.password,
-          })
-          .then(() => {
-            if (store.state.user.Success == false) {
-              this.error = store.state.user.Message;
-              return;
-            } else {
-              this.$router.push({
-                name: "organization",
-              });
-            }
-          });
+        this.$router.push("/navigation");
       } catch (error) {
         console.log(error);
       }

@@ -4,7 +4,7 @@
         <div class="hidden lg:flex lg:flex-shrink-0">
             <div class="flex flex-col w-64">
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
-                <div class="flex flex-col h-0 flex-1 border-r border-green-200 bg-green-800">
+                <div class="flex flex-col h-0 flex-1 border-r border-gray-200 bg-gray-100">
                     <LeftNavBar />
                     <LeftNavProfileBar />
                 </div>
@@ -12,17 +12,25 @@
         </div>
         <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
             <div class="flex-1 relative z-0 flex overflow-hidden">
-                <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last" tabindex="0">
+                <main
+                    class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last"
+                    tabindex="0"
+                >
                     <article>
-                        <NavigationPageHeader heading="Navigation Data Management" showbutton="true" guide="Search
-                                for Navigation data" addClickEvent="evtUpsertNavigation" />
-                                        <NavigationSearch heading="" />
-                                        <!--Datatable action buttons (Start)-->
-                                        <NavigationDataTableActionButtons />
-                                        <!--Datatable action buttons (End)-->
-                                        <NavigationDataTable />
+                        <NavigationPageHeader
+                            heading="Navigation Data Management"
+                            showbutton="true"
+                            guide="Search
+                                for Navigation data"
+                            addClickEvent="evtUpsertNavigation"
+                        />
+                        <NavigationSearch heading="" />
+                        <!--Datatable action buttons (Start)-->
+                        <NavigationDataTableActionButtons />
+                        <!--Datatable action buttons (End)-->
+                        <NavigationDataTable />
                     </article>
-                </main>
+                    </main>
             </div>
         </div>
         <NavigationUpsert />
@@ -30,44 +38,38 @@
 </template>
 
 <script>
-    /**
-     * index.vue
-     *
-     * @description :: Landing page for [Navigation]
-     *
-     * @author      :: Zynobot
-     * @help        :: 
-     *
-     * Created at   :: Sun May 16 2021 18:31:44 GMT-0400 (Eastern Daylight Time)
-     * Modified at  :: Sun May 16 2021 18:31:44 GMT-0400 (Eastern Daylight Time)
-     */
-    import LeftNavBar from "@/components/LeftNavBar.vue";
-    import LeftNavProfileBar from "@/components/LeftNavProfileBar.vue";
-    import NavigationPageHeader from "@/pages/navigation/NavigationPageHeader.vue";
-    import NavigationUpsert from "@/pages/navigation/NavigationUpsert.vue";
-    import NavigationSearch from "@/pages/navigation/NavigationSearch.vue";
-    import NavigationDataTable from "@/pages/navigation/NavigationDataTable.vue";
-    import NavigationDataTableActionButtons from "@/pages/navigation/NavigationDataTableActionButtons.vue";
+/**
+ * index.vue
+ *
+ * @description :: Landing page for [Navigation]
+ *
+ * @author      :: Zynobot
+ * @help        ::
+ *
+ * Created at   :: Sun May 16 2021 18:31:44 GMT-0400 (Eastern Daylight Time)
+ * Modified at  :: Sun May 16 2021 18:31:44 GMT-0400 (Eastern Daylight Time)
+ */
+import LeftNavBar from "@/components/LeftNavBar.vue";
+import LeftNavProfileBar from "@/components/LeftNavProfileBar.vue";
+import NavigationPageHeader from "@/pages/navigation/NavigationPageHeader.vue";
+import NavigationUpsert from "@/pages/navigation/NavigationUpsert.vue";
+import NavigationSearch from "@/pages/navigation/NavigationSearch.vue";
+import NavigationDataTable from "@/pages/navigation/NavigationDataTable.vue";
+import NavigationDataTableActionButtons from "@/pages/navigation/NavigationDataTableActionButtons.vue";
 
-    export default {
-        layout: 'app',
-        components: {
-            LeftNavBar,
-            LeftNavProfileBar,
-            NavigationPageHeader,
-            NavigationSearch,
-            NavigationUpsert,
-            NavigationDataTable,
-            NavigationDataTableActionButtons,
-    },
-    methods: {
-
-    },
-    created() {
-
-    },
-    beforeDestroy() {
-
-    }
+export default {
+  layout: "app",
+  components: {
+    LeftNavBar,
+    LeftNavProfileBar,
+    NavigationPageHeader,
+    NavigationSearch,
+    NavigationUpsert,
+    NavigationDataTable,
+    NavigationDataTableActionButtons,
+  },
+  methods: {},
+  created() {},
+  beforeDestroy() {},
 };
 </script>

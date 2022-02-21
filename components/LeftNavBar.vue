@@ -147,13 +147,13 @@
                         <nav class="flex-1 px-2 py-4 space-y-1">
                             <!--  <a href="#" class="bg-gray-900 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">-->
                             <a
-                                v-for="(menu,index) in menuitems.menus"
+                                v-for="(menu) in menuitems.menus"
                                 :key="menu.link"
                                 :href="menu.link"
                                 class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group  group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                             >
                                 <svg
-                                    class="text-gray-300 mr-3 h-6 w-6"
+                                    class="text-gray-800 mr-4 flex-shrink-0 h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -161,10 +161,12 @@
                                     aria-hidden="true"
                                 >
                                     <path
+                                        v-for="(icon,index) in menu.icons"
+                                        :key="index"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="2"
-                                        :d="menu.icon"
+                                        :d="icon"
                                     />
                                     </svg>
                                     {{menu.title}}
