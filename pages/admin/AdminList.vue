@@ -24,7 +24,7 @@
                             clip-rule="evenodd"
                         />
                         </svg>
-                        <span>Settings</span>
+                        <span>Administration</span>
                         </a>
             </div>
             </nav>
@@ -36,12 +36,12 @@
                     class="hidden flex-shrink-0 w-96 bg-white border-r border-blue-gray-200 xl:flex xl:flex-col"
                 >
                     <div class="flex-shrink-0 h-16 px-6 border-b border-blue-gray-200 flex items-center">
-                        <p class="text-lg font-medium text-blue-gray-900">Settings</p>
+                        <p class="text-lg font-medium text-blue-gray-900">Setup & Configurations</p>
                     </div>
                     <div class="flex-1 min-h-0 overflow-y-auto">
                         <!-- Current: "bg-blue-50 bg-opacity-50", Default: "hover:bg-blue-50 hover:bg-opacity-50" -->
                         <a
-                            v-for="(menu) in menuitems.navSettings"
+                            v-for="(menu) in menuitems.navAdmin"
                             :key="menu.link"
                             :href="menu.link"
                             class="bg-green-50 bg-opacity-50 flex p-6 border-b border-green-gray-200"
@@ -75,7 +75,7 @@
                     <!-- Secondary sidebar (End)-->
                     <!-- Main content (start)-->
                     <div class="flex-1 xl:overflow-y-auto">
-                        <ProfileUpsert/>
+
                     </div>
                     <!-- Main content (End)-->
             </div>
@@ -84,11 +84,9 @@
 
 <script>
 import menuitems from "@/store/siteconfig.json";
-import ProfileUpsert from "@/pages/settings/ProfileUpsert.vue";
+
 export default {
-  components: {
-    ProfileUpsert,
-  },
+  components: {},
   data() {
     return {
       menuitems,

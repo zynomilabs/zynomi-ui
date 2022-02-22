@@ -1,13 +1,10 @@
 <template>
-
-  <div class="max-w-3xl mx-auto py-10 px-4 sm:px-6 lg:py-12 lg:px-8">
-    <h1 class="text-3xl font-extrabold text-blue-gray-900">Account</h1>
-
+  <div class="max-w-3xl mx-auto px-2 sm:px-2 lg:px-4">
     <form class="mt-6 space-y-8 divide-y divide-y-blue-gray-200">
       <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-6">
         <div class="sm:col-span-6">
-          <h2 class="text-xl font-medium text-blue-gray-900">Profile</h2>
-          <p class="mt-1 text-sm text-blue-gray-500">This information will be displayed publicly so be careful what you share.</p>
+          <h2 class="text-xl font-medium text-blue-gray-900">Profile Information</h2>
+          <p class="mt-1 text-sm text-blue-gray-500">This information will show up in the notifications and access logs</p>
         </div>
 
         <div class="sm:col-span-3">
@@ -50,7 +47,7 @@
                 name="username"
                 id="username"
                 autocomplete="username"
-                value="fredrico"
+                value="Jessy"
                 class="flex-1 block w-full min-w-0 border-blue-gray-300 rounded-none rounded-r-md text-blue-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500"
               >
             </div>
@@ -64,7 +61,7 @@
             <div class="mt-1 flex items-center">
               <img
                 class="inline-block h-12 w-12 rounded-full"
-                src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80"
+                src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                 alt=""
               >
                 <div class="ml-4 flex">
@@ -157,18 +154,18 @@
             >
         </div>
 
-        <p class="text-sm text-blue-gray-500 sm:col-span-6">This account was created on
+        <p class="hidden text-sm text-blue-gray-500 sm:col-span-6">This account was created on
           <time datetime="2017-01-05T20:35:40">January 5, 2017, 8:35:40 PM</time>.</p>
       </div>
 
       <div class="pt-8 flex justify-end">
         <button
           type="button"
-          class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-blue-gray-900 hover:bg-blue-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-blue-gray-900 hover:bg-blue-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >Cancel</button>
           <button
             type="submit"
-            class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >Save</button>
       </div>
     </form>

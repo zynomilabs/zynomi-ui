@@ -13,7 +13,7 @@
     <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
       <div class="flex-1 relative z-0 flex overflow-hidden">
         <main class="flex-1 flex overflow-hidden">
-          <SettingsListView />
+            <AccountList />
         </main>
       </div>
     </div>
@@ -34,14 +34,14 @@
  */
 import LeftNavBar from "@/components/LeftNavBar.vue";
 import LeftNavProfileBar from "@/components/LeftNavProfileBar.vue";
-import SettingsListView from "@/pages/settings/SettingsList.vue";
+import AccountList from "@/pages/account/AccountList.vue";
 
 export default {
   layout: "app",
   components: {
     LeftNavBar,
     LeftNavProfileBar,
-    SettingsListView,
+    AccountList,
   },
   methods: {},
   created() {},
