@@ -54,7 +54,7 @@
                                                 aria-label="Email address"
                                                 name="email"
                                                 type="email"
-                                                value="admin@youremail.com"
+                                                value="jessy.s@zynomi.com"
                                                 required
                                                 class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-none sm:text-sm border-gray-300"
                                                 placeholder="Email address"
@@ -176,8 +176,8 @@ export default {
   data() {
     return {
       users: {},
-      email: "",
-      password: "",
+      email: "jessy.s@zynomi.com",
+      password: "secret",
       error: null,
       menuitems,
     };
@@ -186,7 +186,7 @@ export default {
     // Method to authenticate user
     signIn() {
       try {
-        this.$router.push("/navigation");
+        this.$router.push("/account");
       } catch (error) {
         console.log(error);
       }
