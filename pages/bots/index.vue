@@ -48,11 +48,11 @@
  */
 import LeftNavBar from '@/components/LeftNavBar.vue';
 import LeftNavProfileBar from '@/components/LeftNavProfileBar.vue';
-import BotPageHeader from '@/pages/Bots/BotPageHeader.vue';
-import BotUpsert from '@/pages/Bots/BotUpsert.vue';
-import BotSearch from '@/pages/Bots/BotSearch.vue';
-import BotDataTable from '@/pages/Bots/BotDataTable.vue';
-import BotDataTableActionButtons from '@/pages/Bots/BotDataTableActionButtons.vue';
+import BotPageHeader from '@/pages/bots/BotPageHeader.vue';
+import BotUpsert from '@/pages/bots/otUpsert.vue';
+import BotSearch from '@/pages/bots/BotSearch.vue';
+import BotDataTable from '@/pages/bots/BotDataTable.vue';
+import BotDataTableActionButtons from '@/pages/bots/BotDataTableActionButtons.vue';
 
 export default {
   layout: 'app',

@@ -18,8 +18,14 @@
 						ref="mydt"
 					>
 						<v2-table-column type="selection" width="45"> </v2-table-column>
-					
-						<v2-table-column label="email" prop="email">
+						<v2-table-column label="Name" prop="email">
+							<template slot-scope="scope">
+								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
+									{{scope.row.name | truncate(25)}}
+								</div>
+							</template>
+						</v2-table-column>
+						<v2-table-column label="Email" prop="email">
 							<template slot-scope="scope">
 								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
 									{{scope.row.email | truncate(25)}}
@@ -31,6 +37,14 @@
 							<template slot-scope="scope">
 								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
 									{{scope.row.status | truncate(25)}}
+								</div>
+							</template>
+						</v2-table-column>
+
+						<v2-table-column label="Role" prop="role">
+							<template slot-scope="scope">
+								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
+									{{scope.row.role}}
 								</div>
 							</template>
 						</v2-table-column>
@@ -184,7 +198,10 @@
 	            row,
 	            rowIndex
 	        }) {
+				return;
 	            let className = "";
+				className = 'bg-gray-50 border-white';
+				return className;
 	            if (!row.is_enabled) {
 	                className = 'bg-blue-50 border-blue-200';
 	            }
