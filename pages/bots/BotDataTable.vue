@@ -3,7 +3,7 @@
     <div class="flex">
       <div class="flex-1 bg-gradient-to-r">
         <div class="flex-1 m-1 p-1">
-          <v2-table :data="Bot.data" :default-sort="{ prop: 'name', order: 'ascending' }" @sort-change="handleSortChange" :loading="loading" :total="total" :pagination-info="paginationInfo" :shown-pagination="true" @page-change="getBot" border :row-class-name="getRowClassName" height="450" ref="mydt">
+          <v2-table :data="Bot.data" :default-sort="{ prop: 'payment_date', order: 'ascending' }" @sort-change="handleSortChange" :loading="loading" :total="total" :pagination-info="paginationInfo" :shown-pagination="true" @page-change="getBot" border :row-class-name="getRowClassName" height="450" ref="mydt">
             <v2-table-column type="selection" width="45"> </v2-table-column>
 
             <v2-table-column label="name" prop="name" width="100">
@@ -14,7 +14,7 @@
               </template>
             </v2-table-column>
 
-            <v2-table-column label="Date Created" prop="created_at" width="100">
+            <v2-table-column label="Date Created" prop="payment_date" width="100">
               <template slot-scope="scope">
                 {{ scope.row.created_at | moment('DD-MMM-YYYY') }}
               </template>

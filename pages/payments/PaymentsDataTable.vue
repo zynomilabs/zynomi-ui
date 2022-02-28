@@ -45,7 +45,7 @@
 						<v2-table-column label="Amount" prop="payment_amount" width="100">
 							<template slot-scope="scope">
 								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
-									{{scope.row.payment_amount}}
+									{{scope.row.payment_amount | numFormat}}
 								</div>
 							</template>
 						</v2-table-column>
