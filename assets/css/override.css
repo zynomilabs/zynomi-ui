@@ -5,6 +5,14 @@
 .my-custom-style {
   background-color: #45f5cf;
 }
+.my-custom-style-border {
+  border: 1px solid #45f5cf;
+  background-color: #45f5cf;
+}
 .cur-page {
   @apply my-custom-style text-white font-semibold  hover:bg-green-700 hover:border-green-700 hover:text-white !important;
+}
+
+.v2-checkbox__input.is-checked .v2-checkbox__inner {
+  @apply my-custom-style;
 }

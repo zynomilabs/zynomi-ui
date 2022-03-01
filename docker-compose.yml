@@ -1,17 +1,25 @@
-version: "3.7"
+version: '3.7'
+
+networks:
+  traefik-public:
+    external: true
 
 services:
   zynomi-ui-web:
-    networks:
-      - frontend
     image: zynomi/zynomi-ui-web:latest
     container_name: zynomi-ui-web
+    networks:
+      - traefik-public
     restart: unless-stopped
     tty: true
     ports:
-      - "5000:80"
+      - '5000:80'
     environment:
-      - REST_ENDPOINT="http://localhost:8000/api"
+      - REST_ENDPOINT="https://api.zynomi.com/"
       - API_KEY=
-networks:
-  frontend: null
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.zynomi-ui-web.tls=true'
+      - 'traefik.http.routers.zynomi-ui-web.rule=Host(`fin-demo.zynomi.com`)'
+      - 'traefik.http.routers.zynomi-ui-web.entrypoints=websecure'
+      - 'traefik.http.routers.zynomi-ui-web.tls.certresolver=myresolver'

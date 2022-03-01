@@ -1,1 +1,1 @@
-const REST_ENDPOINT = 'http://localhost:5000/api/'
+const REST_ENDPOINT = 'https://api.zynomi.com/'
