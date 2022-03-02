@@ -135,7 +135,7 @@
                     <div class="flex items-center h-16 flex-shrink-0 px-4 bg-gray-100">
                         <nuxt-link
                             tag="img"
-                            :src="menuitems.branding.logo.source"
+                            :src="siteConfig.branding.logo.source"
                             to="/"
                             alt="Logo"
                             class="h-8 w-auto"
@@ -203,12 +203,14 @@
 </template>
 
 <script>
-import menuitems from "@/store/siteconfig.json";
+import siteConfig from "@/store/siteconfig.json";
+import menuitems from "@/store/left-main-nav.json";
 export default {
   components: {},
   data() {
     return {
       menuitems,
+      siteConfig
     };
   },
   methods: {},

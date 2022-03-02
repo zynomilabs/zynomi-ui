@@ -68,7 +68,7 @@
                                                                 Payment date
                                                             </label>
                                                             <div class="mt-1 rounded-md shadow-sm">
-                                                               <VueCtkDateTimePicker color="#50E3C2" button-color="#50E3C2" onlyDate="true" format="YYYY-MM-DD hh:mm:ss" formatted="L" v-model="data.payment_date" auto-close="true" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                                                               <VueCtkDateTimePicker label="" color="#50E3C2" button-color="#50E3C2" onlyDate="true" format="YYYY-MM-DD hh:mm:ss" formatted="L" v-model="data.payment_date" auto-close="false" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
                                                             </div>
                                                         </div>
                                                         

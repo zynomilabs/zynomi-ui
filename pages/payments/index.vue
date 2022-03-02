@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen flex overflow-hidden bg-white">
+    <div class="h-screen flex overflow-hidden">
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:flex lg:flex-shrink-0">
             <div class="flex flex-col w-64">
@@ -17,6 +17,7 @@
                         <PaymentsPageHeader heading="Payments" showbutton="true" guide="Search
                                 for Payments data" addClickEvent="evtUpsertPayments" />
                                         <PaymentsSearch heading="" />
+                                        <stat-actions class="p-2"/> 
                                         <!--Datatable action buttons (Start)-->
                                         <PaymentsDataTableActionButtons />
                                         <!--Datatable action buttons (End)-->

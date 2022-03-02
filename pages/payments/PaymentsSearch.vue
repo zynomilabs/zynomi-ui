@@ -7,9 +7,20 @@
                     {{this.heading}}
                 </h2>
                 <div class="sm:col-span-6">
-                    <Dropdownlist @selected_item="handleSelectedForMarkAsDeleteInSearch" name="search_mark_as_delete"
-                        label="Marked as delete"
-                        :data="{'data' : [{'code' : 'true', 'name':'Yes'},{'code' : 'false', 'name':'No'}]}" />
+                    <Dropdownlist 
+                        name="search_payment_type"
+                        label="Payment Type"
+                         @selected_item="handleSelectedForSearchIn_Payment_type"             
+                         api='payment_type'
+                        />
+                </div>
+                <div class="sm:col-span-6">
+                    <label for="name" class="block text-sm font-medium text-gray-700">
+                        Statement Period
+                    </label>
+                    <div class="mt-1 shadow-sm">
+                        <VueCtkDateTimePicker label="" v-model="statement_period" range="true" color="#50E3C2" button-color="#50E3C2" onlyDate="true" format="YYYY-MM-DD hh:mm:ss" formatted="L" auto-close="false" class="z-40 flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                    </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">
@@ -61,6 +72,8 @@
      * Modified at  :: Sun Feb 27 2022 16:44:20 GMT-0500 (Eastern Standard Time)
      */
     import Dropdownlist from "@/components/Dropdownlist.vue";
+    import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
+    import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
     export default {
         layout: 'app',
@@ -68,24 +81,25 @@
             heading: String
         },
         components: {
-
-            Dropdownlist
+            Dropdownlist,
+            VueCtkDateTimePicker
         },
         data() {
             return {
                 isFilterPaymentsVisible: false,
-                mark_as_delete: "",
+                payment_type: "",
+                statement_period: "",
         }
     },
     methods: {
         searchPayments() {
             let args = {}
-            args.name = this.$refs.search_name.value
-            args.mark_as_delete = this.mark_as_delete
+            args.name = this.$refs.dt_range_statement_period.value
+            args.statement_period = this.statement_period
             $nuxt.$emit('evtSearchPayments', args)
         },
-        handleSelectedForMarkAsDeleteInSearch(data) {
-            this.mark_as_delete = data;
+        handleSelectedForSearchIn_Payment_type(data){
+            this.payment_type = data;
         }
     },
     created() {

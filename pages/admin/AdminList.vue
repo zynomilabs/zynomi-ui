@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import menuitems from "@/store/siteconfig.json";
+import menuitems from "@/store/left-admin-nav.json";
 
 export default {
   components: {},
