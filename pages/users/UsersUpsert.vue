@@ -121,11 +121,13 @@
                                                         
                                                          <div class="sm:col-span-6">
                                                              <CheckBoxGroup
-        
+                                                                @checked_item="handleCheckedInRole"
+                                                                v-model="data.role"
                                                                 id="user_role"
                                                                 name="user_role"
                                                                 label="Roles"
                                                                 api='role'
+                                                                :checked_value="Agent"
                                                             />
                                                         </div>
                                                        
@@ -253,7 +255,11 @@
         },
         handleSelectedInMarkAsDelete(data) {
             this.data.mark_as_delete = data;
-        }
+        },
+        handleCheckedInRole(data) {
+            //alert(data + " -> Checked Item")
+            //this.data.role = data;
+        },
     },
     computed: { },
     mounted() {

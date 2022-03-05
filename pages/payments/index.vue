@@ -17,7 +17,7 @@
                         <PaymentsPageHeader heading="Payments" showbutton="true" guide="Search
                                 for Payments data" addClickEvent="evtUpsertPayments" />
                                         <PaymentsSearch heading="" />
-                                        <stat-actions class="p-2"/> 
+                                        <stat-actions :data="stats" class="p-2"/> 
                                         <!--Datatable action buttons (Start)-->
                                         <PaymentsDataTableActionButtons />
                                         <!--Datatable action buttons (End)-->
@@ -49,6 +49,7 @@
     import PaymentsSearch from "@/pages/payments/PaymentsSearch.vue";
     import PaymentsDataTable from "@/pages/payments/PaymentsDataTable.vue";
     import PaymentsDataTableActionButtons from "@/pages/payments/PaymentsDataTableActionButtons.vue";
+    import stats from "@/store/stats-payments.json";
 
     export default {
         layout: 'app',
@@ -61,6 +62,10 @@
             PaymentsDataTable,
             PaymentsDataTableActionButtons,
     },
+        data() {
+            return {
+                stats
+        }},
     methods: {
 
     },

@@ -46,6 +46,7 @@ export default {
         },
         onChangeDropdown(e) {
             const selectedCode = e.target.value;
+            //alert(selectedCode)
             const option = this.items.data.find((option) => {
                 return selectedCode === option.code;
             });
