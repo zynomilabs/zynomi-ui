@@ -19,14 +19,14 @@
 					>
 						<v2-table-column type="selection" width="45"> </v2-table-column>
 						
-						<v2-table-column label="Date" prop="payment_date" width="100">
+						<v2-table-column label="Date" prop="payment_date" width="100" sortable>
 							<template slot-scope="scope">
-								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
+								<div class="ml-2 text-center text-xs font-medium text-gray-500 tracking-wider">
 									{{scope.row.payment_date | moment("DD-MMM-YYYY")}}
 								</div>
 							</template>
 						</v2-table-column>
-						<v2-table-column label="Memo" prop="description">
+						<v2-table-column label="Description" prop="description">
 							<template slot-scope="scope">
 								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
 									{{scope.row.description | truncate(25)}}
@@ -42,9 +42,9 @@
 							</template>
 						</v2-table-column>
 						
-						<v2-table-column label="Amount" prop="payment_amount" width="100">
+						<v2-table-column label="Amount" prop="payment_amount" width="100" sortable>
 							<template slot-scope="scope">
-								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
+								<div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
 									{{scope.row.payment_amount | numFormat}}
 								</div>
 							</template>
@@ -52,7 +52,7 @@
 						
 						<v2-table-column label="Currency" prop="payment_currency" width="100">
 							<template slot-scope="scope">
-								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
+								<div class="ml-2 text-center text-xs font-medium text-gray-500 tracking-wider">
 									{{scope.row.payment_currency}}
 								</div>
 							</template>
@@ -60,7 +60,7 @@
 						
 						<v2-table-column label="Exg. Rate" prop="currency_exchange_rate" width="100">
 							<template slot-scope="scope">
-								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
+								<div class="ml-2 pr-2 text-right text-xs font-medium text-gray-500 tracking-wider">
 									{{scope.row.currency_exchange_rate}}
 								</div>
 							</template>
@@ -172,11 +172,12 @@
 	                this.loading = false;
 	                let offset = page == 1 ? 0 : (page - 1) * pageSize;
 	                offset = isNaN(offset) ? 0 : offset;
-	                let api = this.$config.apiURL  + "Payments?sort=id%20DESC&limit=" + pageSize + "&skip=" + offset;
+	                let api = this.$config.apiURL  + "Payments?limit=" + pageSize + "&skip=" + offset;
 	                if (!this.$_.isEmpty(this.searchCriteria)) {
 	                    api += this.buildSearchQueryCriteria();
 	                }
-
+					//alert(api)
+					console.log(api)
 	                const {
 	                    data
 	                } = await this.$axios.get(api);
@@ -204,25 +205,42 @@
 	        buildSearchQueryCriteria() {
 	            let criteria = '&where={';
 	            let boolCriteriaExists = false;
-	            if (!this.$_.isEmpty(this.searchCriteria.mark_as_delete)) {
-	                criteria += '"mark_as_delete" : ' + this.searchCriteria.mark_as_delete
+				
+				//{"search_payment_type":"","search_description":"","statement_period":""}
+	            if (!this.$_.isEmpty(this.searchCriteria.search_payment_type)) {
+	                criteria += '"payment_type" : "' + this.searchCriteria.search_payment_type + '"'
 	                boolCriteriaExists = true;
 	            }
-	            if (!s.isBlank(this.searchCriteria.name)) {
+	            if (!s.isBlank(this.searchCriteria.search_description)) {
 	                if (boolCriteriaExists) {
-	                    criteria += ',"name" : {"contains":' + '"' + this.searchCriteria.name + '"}'
+	                    criteria += ',"description" : {"contains":' + '"' + this.searchCriteria.search_description + '"}'
 	                    boolCriteriaExists = true;
 	                } else {
-	                    criteria += '"name" : {"contains":' + '"' + this.searchCriteria.name + '"}'
+	                    criteria += '"description" : {"contains":' + '"' + this.searchCriteria.search_description + '"}'
+	                    boolCriteriaExists = true;
+	                }
+	                boolCriteriaExists = true;
+	            }
+				if (!s.isBlank(this.searchCriteria.statement_period)) {
+
+	                if (boolCriteriaExists) {
+	                    criteria += ', "and" : [{"payment_date" : { ">=" : "' + this.searchCriteria.statement_period.start + '"}}'
+						criteria += ', {"payment_date" : { "<=" : "' + this.searchCriteria.statement_period.end + '"}}]'
+	                    boolCriteriaExists = true;
+	                } else {
+	                    criteria += ' "and" : [{"payment_date" : { ">=" : "' + this.searchCriteria.statement_period.start + '"}}'
+						criteria += ', {"payment_date" : { "<=" : "' + this.searchCriteria.statement_period.end + '"}}]'
 	                    boolCriteriaExists = true;
 	                }
 	                boolCriteriaExists = true;
 	            }
 	            criteria += '}';
+				//alert(criteria)
+				console.log(criteria)
 	            return criteria;
 	        },
 	        async handleSortChange() {
-
+				
 	        },
 	        getRowClassName({
 	            row,
@@ -265,6 +283,7 @@
 	        });
 	        //4) Search
 	        this.$nuxt.$on('evtSearchPayments', (data) => {
+				//console.log(JSON.stringify(data))
 	            //alert(JSON.stringify(data))
 	            this.searchCriteria = data;
 	            this.getPayments(1);

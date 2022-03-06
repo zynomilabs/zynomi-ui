@@ -95,7 +95,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-    '@nuxt/content'
+    '@nuxt/content',
   ],
   content: {
     // Options
@@ -127,8 +127,7 @@ export default {
     proxy: false
   },
   googleAnalytics: {
-    id: 'UA-207352335-2'
-    //propertyid : 286077743
+    //id: '<yourid>'
   },
   toast: {
     position: 'bottom-right',

@@ -14,7 +14,7 @@
             <div class="flex-1 relative z-0 flex overflow-hidden">
                 <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last" tabindex="0">
                     <article>
-                        <UsersPageHeader heading="Users Data Management" showbutton="true" guide="Search
+                        <UsersPageHeader heading="User Management" showbutton="true" guide="Search
                                 for Users data" addClickEvent="evtUpsertUsers" />
                                         <UsersSearch heading="" />
                                         <!--Datatable action buttons (Start)-->

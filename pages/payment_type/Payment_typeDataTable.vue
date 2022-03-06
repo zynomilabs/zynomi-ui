@@ -18,7 +18,13 @@
 						ref="mydt"
 					>
 						<v2-table-column type="selection" width="45"> </v2-table-column>
-						
+						<v2-table-column label="Code" prop="code">
+							<template slot-scope="scope">
+								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
+									{{scope.row.code | truncate(50)}}
+								</div>
+							</template>
+						</v2-table-column>
 						<v2-table-column label="name" prop="name">
 							<template slot-scope="scope">
 								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
@@ -35,24 +41,12 @@
 							</template>
 						</v2-table-column>
 						
-						<v2-table-column label="published_at" prop="published_at">
-							<template slot-scope="scope">
-								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
-									{{scope.row.published_at | truncate(25)}}
-								</div>
-							</template>
-						</v2-table-column>
-						
 						<v2-table-column label="Date Created" prop="created_at" width="100">
 							<template slot-scope="scope">
 								{{scope.row.created_at | moment("DD-MMM-YYYY")}}
 							</template>
 						</v2-table-column>
-						<v2-table-column label="Addl. attributes" prop="additional_attributes" width="100">
-							<template slot-scope="scope">
-								{{scope.row.additional_attributes | truncate(25)}}
-							</template>
-						</v2-table-column>
+					
 						<v2-table-column label="Status" prop="is_enabled" width="100">
 							<template slot-scope="scope">
 								<span

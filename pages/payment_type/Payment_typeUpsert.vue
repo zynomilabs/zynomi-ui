@@ -46,7 +46,17 @@
                                                         <p class="mt-2 text-sm text-red-600" id="email-error">Special Characters are not allowed.</p>
                                                     </div>-->
 
-                                                    
+                                                        <div class="sm:col-span-6">
+                                                            <label for="Code"
+                                                                class="block text-sm font-medium text-gray-700">
+                                                                Code
+                                                            </label>
+                                                            <div class="mt-1 rounded-md shadow-sm">
+                                                                <input v-model="data.code" type="text" id="code"
+                                                                    name="code" autocomplete="code"
+                                                                    class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300">
+                                                            </div>
+                                                        </div>
                                                         <div class="sm:col-span-6">
                                                             <label for="name"
                                                                 class="block text-sm font-medium text-gray-700">

@@ -10,6 +10,7 @@
                     <Dropdownlist 
                         name="search_payment_type"
                         label="Payment Type"
+                        v-model="search_payment_type"
                          @selected_item="handleSelectedForSearchIn_Payment_type"             
                          api='payment_type'
                         />
@@ -36,7 +37,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </div>
-                        <input type="search" name="search_name" id="search_name" ref="search_name"
+                        <input type="search" name="search_description" id="search_description" ref="search_description"
                             class="focus:ring-green-500 focus:border-green-500 block w-full pl-10 sm:text-sm border-gray-300"
                             placeholder="Search">
                     </div>
@@ -89,17 +90,20 @@
                 isFilterPaymentsVisible: false,
                 payment_type: "",
                 statement_period: "",
+                search_payment_type:""
         }
     },
     methods: {
         searchPayments() {
             let args = {}
-            args.name = this.$refs.dt_range_statement_period.value
+            args.search_payment_type = this.search_payment_type
+            args.search_description = this.$refs.search_description.value
             args.statement_period = this.statement_period
+            //alert(JSON.stringify(args))
             $nuxt.$emit('evtSearchPayments', args)
         },
         handleSelectedForSearchIn_Payment_type(data){
-            this.payment_type = data;
+            this.search_payment_type = data;
         }
     },
     created() {

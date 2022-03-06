@@ -84,10 +84,10 @@
 
 <script>
 import menuitems from "@/store/siteconfig.json";
-import ProfileUpsert from "@/pages/account/ProfileUpsert.vue";
+
 export default {
   components: {
-    ProfileUpsert,
+   
   },
   data() {
     return {

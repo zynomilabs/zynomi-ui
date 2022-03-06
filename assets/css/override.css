@@ -16,3 +16,20 @@
 .v2-checkbox__input.is-checked .v2-checkbox__inner {
   @apply my-custom-style;
 }
+
+.zyno-sort-ascending {
+  border-top: 5px solid #45f5cf;
+}
+
+.zyno-sort-descending {
+  border-top: 5px solid #999;
+  border-bottom: 5px solid #45f5cf;
+}
+
+.v2-table__cell.v2-table__column-cell.ascending .ascending-caret {
+  @apply zyno-sort-ascending;
+}
+
+.descending-caret {
+  @apply zyno-sort-descending;
+}

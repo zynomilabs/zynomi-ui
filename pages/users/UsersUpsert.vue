@@ -7,14 +7,14 @@
                 <div class="w-screen max-w-md">
                     <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                         <div class="flex-1 h-0 overflow-y-auto">
-                            <header class="space-y-1 py-6 px-4 bg-green-700 sm:px-6">
+                            <header class="space-y-1 py-6 px-4 bg-gray-200 sm:px-6">
                                 <div class="flex items-center justify-between space-x-3">
-                                    <h2 class="text-lg leading-7 font-medium text-white">
+                                    <h2 class="text-lg leading-7 font-medium text-gray-700">
                                         Users
                                     </h2>
                                     <div class="h-7 flex items-center">
                                         <button v-on:click="closeUsersPanel()" aria-label="Close panel"
-                                            class="text-green-200 hover:text-white transition ease-in-out duration-150">
+                                            class="text-gray-600 hover:text-white transition ease-in-out duration-150">
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M6 18L18 6M6 6l12 12" />
@@ -23,8 +23,8 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-sm leading-5 text-green-300">
-                                        Create or update Users record
+                                    <p class="text-sm leading-5 text-gray-500">
+                                        Create or update user
                                     </p>
                                 </div>
                             </header>
@@ -35,7 +35,7 @@
                                             class="space-y-8 divide-y divide-gray-200" @submit.prevent="SaveAndUpdate">
                                             <div class="sm:overflow-hidden">
                                                 <div class="bg-white space-y-6">
-                                                    <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                                    <div class="grid grid-cols-1 gap-y-3 gap-x-4 sm:grid-cols-6">
                                                         <!--<div class="sm:col-span-6">
                                                         <label for="code" class="block text-sm font-medium text-gray-700">
                                                             Code
@@ -45,32 +45,12 @@
                                                         </div>
                                                         <p class="mt-2 text-sm text-red-600" id="email-error">Special Characters are not allowed.</p>
                                                     </div>-->
-                              <div class="sm:col-span-6">
-                                                            <label for="name"
-                                                                class="block text-sm font-medium text-gray-700">
-                                                                Login
-                                                            </label>
-                                                            <div class="mt-1 rounded-md shadow-sm">
-                                                                <input v-model="data.login" type="text" id="login"
-                                                                    name="login" autocomplete="login"
-                                                                    class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                       
-                                                        <div class="sm:col-span-6">
-                                                            <label for="name"
-                                                                class="block text-sm font-medium text-gray-700">
-                                                                Password
-                                                            </label>
-                                                            <div class="mt-1 rounded-md shadow-sm">
-                                                                <input v-model="data.hashed_password" type="text" id="hashed_password"
-                                                                    name="hashed_password" autocomplete="hashed_password"
-                                                                    class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="sm:col-span-6">
+                                                     <div class="sm:col-span-6">
+          <h2 class="text-xl font-medium text-blue-gray-900">Profile Information</h2>
+         
+        </div>
+
+         <div class="sm:col-span-6">
                                                             <label for="name"
                                                                 class="block text-sm font-medium text-gray-700">
                                                                 First name
@@ -93,7 +73,23 @@
                                                                     class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300">
                                                             </div>
                                                         </div>
+                              <div class="sm:col-span-6">
+                                                            <label for="name"
+                                                                class="block text-sm font-medium text-gray-700">
+                                                                Username
+                                                            </label>
+                                                            <div class="mt-1 rounded-md shadow-sm">
+                                                                <input v-model="data.login" type="text" id="login"
+                                                                    name="login" autocomplete="login"
+                                                                    class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300">
+                                                            </div>
+                                                        </div>
                                                         
+        <div class="sm:col-span-6">
+          <h2 class="text-xl font-medium text-blue-gray-900">Personal Information</h2>
+         
+        </div>
+                                                       
                                                     
                                                         
                                                         <div class="sm:col-span-6">
@@ -118,6 +114,11 @@
                                                                     class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300">
                                                             </div>
                                                         </div>
+
+                                                        <div class="sm:col-span-6">
+          <h2 class="text-xl font-medium text-blue-gray-900">Roles & Administration</h2>
+          
+        </div>
                                                         
                                                          <div class="sm:col-span-6">
                                                              <CheckBoxGroup
@@ -135,7 +136,7 @@
                                                             <Dropdownlist v-model="data.is_enabled"
                                                                 @selected_item="handleSelectedInStatus"
                                                                 name="is_enabled" label="Status"
-                                                                :data="{'data' : [{'code' : 'true', 'name':'Published'},{'code' : 'false', 'name':'Draft'}]}"
+                                                                :data="{'data' : [{'code' : 'true', 'name':'Active'},{'code' : 'false', 'name':'In-active'}]}"
                                                                 :selected_value="data.is_enabled" />
                                                         </div>
                                                         <div class="sm:col-span-6">

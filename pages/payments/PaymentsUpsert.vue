@@ -48,6 +48,7 @@
                                                                     name="invoice_nuber" autocomplete="invoice_nuber"
                                                                     class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300">
                                                             </div>
+                                                            <p class="mt-2 text-sm text-gray-500">This could be Invoice #., Purchase Order #., Bill #., Transcation #. etc.</p>
                                                         </div>
                                                         
                                                         <div class="sm:col-span-6">
@@ -76,7 +77,7 @@
                                                             <Dropdownlist v-model="data.payment_type"
                                                                 @selected_item="handleSelectedInPayment_type"
                                                                 name="payment_type" label="Payment Type"
-                                                                :data="{'data' : [{'code' : 'ACH', 'name':'ACH'},{'code' : 'Wire Transfer', 'name':'Wire Transfer'},{'code' : 'Cheque', 'name':'Cheque'},{'code' : 'Cash', 'name':'Cash'}]}"
+                                                                api='payment_type'
                                                                 :selected_value="data.payment_type" />
                                                         </div>
 

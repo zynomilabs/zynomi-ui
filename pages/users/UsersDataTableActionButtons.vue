@@ -8,13 +8,13 @@
                     <div class="h-16 flex flex-col justify-center">
                         <div class="">
                             <div class="py-3 flex justify-between">
-                                <!-- Left buttons -->
+                                         <!-- Left buttons -->
                                 <div>
                                     <span
-                                        class="relative z-0 inline-flex shadow-sm sm:shadow-none sm:space-x-3">
+                                        class="relative z-0 inline-flex shadow-sm  sm:shadow-none sm:space-x-3">
                                         <span class="inline-flex sm:shadow-sm">
                                             <button type="button"
-                                                class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
+                                                class="relative inline-flex items-center px-4 py-2  border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
                                                     <path fill-rule="evenodd"
@@ -23,32 +23,9 @@
                                                 </svg>
                                                 <span>Delete</span>
                                             </button>
-                                            <button type="button"
-                                                class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                                <span>Publish</span>
-                                            </button>
-                                            <button type="button"
-                                                class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                                <span>Draft</span>
-                                            </button>
-                                        </span>
-
-                                        <span class="hidden lg:flex space-x-3">
-                                            <button type="button"
+                                           <button type="button"
                                                 @click="$nuxt.$emit('evtRefreshUsersDatatable')"
-                                                class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
+                                                class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2  border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
                                                     <path fill-rule="evenodd"
@@ -57,7 +34,7 @@
                                                 </svg>
                                             </button>
                                             <button type="button" @click="$nuxt.$emit('evtUpsertUsers')"
-                                                class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
+                                                class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2  border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
                                                 <!--<button type="button" @click="$nuxt.$emit('evtUpsertUsers')" class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2  border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">-->
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
@@ -67,7 +44,7 @@
                                                 </svg>
                                                 <span>New</span>
                                             </button>
-                                        </span>
+                                        </span>       
                                     </span>
                                 </div>
                                 <!-- Right buttons -->
