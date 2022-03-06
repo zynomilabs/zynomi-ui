@@ -1,6 +1,7 @@
 {
     "data": [
         {
+            "hidden": false,
             "name": "Opening Balance",
             "description": "Opening balance at the beginning of the statement period selected.",
             "value": "$ 9,003",
@@ -10,6 +11,7 @@
             "css_class": "bg-teal-50 text-teal-700"
         },
         {
+            "hidden": false,
             "name": "Bills Paid",
             "description": "Total payments made for the statement period selected.",
             "value": "$ 8,003",
@@ -19,6 +21,7 @@
             "css_class": "bg-purple-50 text-purple-700"
         },
         {
+            "hidden": false,
             "name": "Bills to Pay",
             "description": "Total outstanding payments to be made for the statement period selected.",
             "value": "$ 2,000",
@@ -28,6 +31,7 @@
             "css_class": "bg-blue-50 text-blue-700"
         },
         {
+            "hidden": false,
             "name": "Closing Balance",
             "description": "Closing balance at the end of the statement period selected.",
             "value": "$ 1,000",

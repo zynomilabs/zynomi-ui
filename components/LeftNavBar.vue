@@ -146,10 +146,11 @@
                     <div class="flex-1 flex flex-col overflow-y-auto">
                         <nav class="flex-1 px-2 py-4 space-y-1">
                             <!--  <a href="#" class="bg-gray-900 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">-->
-                            <a
+                            <a  
                                 v-for="(menu) in menuitems.menus"
                                 :key="menu.link"
                                 :href="menu.link"
+                                v-if="!menu.hidden"
                                 class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group  group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                             >
                                 <svg

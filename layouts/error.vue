@@ -27,7 +27,7 @@
                     
                     <h1 class="mt-2 text-center text-2xl font-extrabold text-gray-900" v-if="error.statusCode === 404">404 Page not found...</h1>
                     <h1 class="mt-2 text-center text-2xl font-extrabold text-gray-900" v-else>An error occurred - {{ error.statusCode }} </h1>
-                    <NuxtLink class="mt-2 text-center text-xl text-gray-900" to="/">Go to Dashboard</NuxtLink>
+                    <NuxtLink class="mt-2 text-center text-xl text-gray-900" to="/">Go to login</NuxtLink>
 
                 </div>
                 <div class="relative lg:grid lg:gap-x-8 m-10">
