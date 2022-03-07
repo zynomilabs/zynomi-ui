@@ -31,7 +31,7 @@
             "css_class": "bg-blue-50 text-blue-700"
         },
         {
-            "hidden": false,
+            "hidden": true,
             "name": "Closing Balance",
             "description": "Closing balance at the end of the statement period selected.",
             "value": "$ 1,000",

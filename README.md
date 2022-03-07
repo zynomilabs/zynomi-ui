@@ -36,4 +36,23 @@ docker run -it -p 8000:80 web.frontend:dev
 
 ```
 
+## Docker administration
+
+```
+# Stop the app / docker
+docker-compose -f docker-compose-apps-fin-demo.yml down
+
+# Remove docker image
+docker image rm $(docker images -q 'zynomi/zynomi-ui-web')
+
+# Pull new app / docker
+docker-compose -f docker-compose-apps-fin-demo.yml up -d
+```
+
+# Prettier commands to format html code
+
+```
+npx prettier --write .
+```
+
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

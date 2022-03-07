@@ -32,7 +32,6 @@
                 </div>
                 <div class="relative lg:grid lg:gap-x-8 m-10">
 
-            
             </div>
         </div>
     </div>

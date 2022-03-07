@@ -29,7 +29,7 @@
 						<v2-table-column label="Description" prop="description">
 							<template slot-scope="scope">
 								<div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
-									{{scope.row.description | truncate(25)}}
+									{{scope.row.description | truncate(200)}}
 								</div>
 							</template>
 						</v2-table-column>
