@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen flex overflow-hidden bg-white">
+  <div class="h-screen flex overflow-hidden bg-gray-50">
     <!-- Static sidebar for desktop -->
     <div class="hidden lg:flex lg:flex-shrink-0">
       <div class="flex flex-col w-64">
@@ -34,15 +34,28 @@
               <div class="flex-1 xl:overflow-y-auto">
                 <div class="max-w-5xl mx-4">
                   <!-- Main content (start)-->
-                  
+
+                  <!-- Stat (start)-->
                   <div class="space-y-8 divide-y divide-gray sm:space-y-5 pt-5">
                     <div>
                       <h3 class="text-lg leading-6 font-medium text-gray-900">Personal Billing</h3>
                       <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
                     </div>
-                    <stats-simple :data="stats" class="pt-4"/> 
+                    <stats-simple :data="stats" class="pt-4" />
                   </div>
-                  
+                  <!-- Stat (End)-->
+
+                  <!-- Billing & Plans display (start)-->
+                  <div class="space-y-8 divide-y divide-gray sm:space-y-5 pt-5">
+                    <div>
+                      <h3 class="text-lg leading-6 font-medium text-gray-900">Billing & plans / Payment information</h3>
+                      <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
+                    </div>
+                    <div></div>
+                  </div>
+                  <BillingDisplay class="w-2/4" />
+                  <!-- Billing & Plans display (End)-->
+
                   <!-- Main content (End)-->
                 </div>
               </div>
@@ -51,6 +64,7 @@
         </main>
       </div>
     </div>
+    <BillingPlansUpsert />
   </div>
 </template>
 <script>
@@ -69,7 +83,9 @@
 import LeftNavBar from '@/components/LeftNavBar.vue';
 import LeftNavProfileBar from '@/components/LeftNavProfileBar.vue';
 import LeftNavSecondary from '@/components/LeftNavSecondary.vue';
-import stats from "@/store/stats-payments.json";
+import BillingPlansUpsert from '@/pages/billing/BillingPlansUpsert.vue';
+import BillingDisplay from '@/pages/billing/BillingDisplay.vue';
+import stats from '@/store/billing.json';
 
 export default {
   layout: 'app',
@@ -77,13 +93,15 @@ export default {
     LeftNavBar,
     LeftNavProfileBar,
     LeftNavSecondary,
-    stats
+    stats,
+    BillingDisplay,
+    BillingPlansUpsert,
   },
   data() {
     return {
       user: {},
       api: '',
-      stats
+      stats,
     };
   },
   methods: {},
