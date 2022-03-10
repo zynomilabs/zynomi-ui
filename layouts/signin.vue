@@ -6,18 +6,22 @@
           <img tag="img" to="/#" alt="Logo" class="mx-auto h-12 w-auto" :src="menuitems.branding.mark.source" />
         </a>
         <h2 class="mt-6 text-center text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-indigo-800">Get started with {{ menuitems.title }}</h2>
-        <p v-if="!forgotPassword" class="mt-2 text-center text-sm text-gray-600 max-w">
+        <p v-if="!forgotPassword && !formSignUp" class="mt-2 text-center text-sm text-gray-600 max-w">
           Don't have an account yet?
-          <a href="#" class="font-medium text-green-600 hover:text-green-500"> Sign up </a>
+          <a @click="handleSignUpClick" href="#" class="font-medium text-green-600 hover:text-green-500"> Sign up </a>
         </p>
         <p v-if="forgotPassword" class="mt-2 text-center text-sm text-gray-600 max-w">
-          Go back to 
-          <a @click="handleForgotPassword" href="#" class="font-medium text-green-600 hover:text-green-500"> Sign in </a>
+          Go back to
+          <a @click="handleSignInClick" href="#" class="font-medium text-green-600 hover:text-green-500"> Sign in </a>
+        </p>
+        <p v-if="formSignUp" class="mt-2 text-center text-sm text-gray-600 max-w">
+          Go back to
+          <a @click="handleSignInClick" href="#" class="font-medium text-green-600 hover:text-green-500"> Sign in </a>
         </p>
         <div>
           <div class="sm:mx-auto sm:w-full sm:max-w-md">
             <div class="px-4 sm:rounded-lg sm:px-10">
-              <form v-if="!forgotPassword" @submit.prevent="login">
+              <form v-if="formSignIn" @submit.prevent="login">
                 <input type="hidden" name="remember" value="true" />
                 <div class="mt-10 flex items-center justify-center">
                   <div class="flex items-center">
@@ -57,9 +61,9 @@
                   </button>
                 </div>
               </form>
+              <!-- Signup (start)-->
 
-              <!--Forgot Password (start)-->
-              <form v-if="forgotPassword">
+              <form v-if="formSignUp" class="space-y-4" @submit.prevent="signIn">
                 <div class="mt-10 flex items-center justify-center">
                   <div class="flex items-center">
                     <label class="ml-2 block text-sm leading-5 text-red-900">
@@ -68,15 +72,63 @@
                   </div>
                 </div>
                 <div class="sm:col-span-6">
-          
+                  <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                   <div class="mt-1 rounded-md shadow-sm">
-                    <input v-model="email" placeholder="Email address" aria-label="Email address" type="text" id="email" name="email" autocomplete="email" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                    <input v-model="data.email" type="text" id="email" name="email" autocomplete="email" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                  </div>
+                </div>
+                <div class="sm:col-span-6">
+                  <label for="phone" class="block text-sm font-medium text-gray-700"> Phone </label>
+                  <div class="mt-1 rounded-md shadow-sm">
+                    <input v-model="data.phone" type="text" id="phone" name="phone" autocomplete="phone" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                  </div>
+                </div>
+                <div class="sm:col-span-6">
+                  <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
+                  <div class="mt-1 rounded-md shadow-sm">
+                    <input v-model="data.password" type="password" id="password" name="password" autocomplete="password" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                  </div>
+                </div>
+                <div class="sm:col-span-6">
+                  <label for="confirm_password" class="block text-sm font-medium text-gray-700"> Confirm Password </label>
+                  <div class="mt-1 rounded-md shadow-sm">
+                    <input v-model="data.confirm_password" type="password" id="confirm_password" name="confirm_password" autocomplete="confirm_password" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                  </div>
+                </div>
+                <div class="mt-6 flex items-center justify-between">
+                  <div class="flex items-center">
+                    <input id="terms" type="checkbox" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300" />
+                    <label for="terms" class="ml-2 block text-sm leading-5 text-gray-900">
+                      I agree to
+                      <a href="#" class="font-medium text-green-600 hover:text-green-500 focus:outline-none focus:underline transition ease-in-out duration-150"> terms & conditions. </a>
+                    </label>
                   </div>
                 </div>
                 <div class="mt-6">
-                  <button id="btnForgotPassword" name="btnForgotPassword" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out">
-                    Reset
-                  </button>
+                  <button @click="signIn()" id="btnSignUp" name="btnSignUp" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out">Sign Up</button>
+                </div>
+                <div class="mt-6">
+                  <button id="btnReset" name="btnReset" type="reset" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700 transition duration-150 ease-in-out">Reset</button>
+                </div>
+              </form>
+
+              <!-- Signup (end)-->
+              <!--Forgot Password (start)-->
+              <form v-if="forgotPassword" @submit.prevent="signIn">
+                <div class="mt-10 flex items-center justify-center">
+                  <div class="flex items-center">
+                    <label class="ml-2 block text-sm leading-5 text-red-900">
+                      {{ error }}
+                    </label>
+                  </div>
+                </div>
+                <div class="sm:col-span-6">
+                  <div class="mt-1 rounded-md shadow-sm">
+                    <input v-model="email" placeholder="Email address" aria-label="Email address" type="text" id="f_email" name="f_email" autocomplete="f_email" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                  </div>
+                </div>
+                <div class="mt-6">
+                  <button @click="signIn()" id="btnForgotPassword" name="btnForgotPassword" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out">Reset</button>
                 </div>
               </form>
               <!--Forgot Passowrd (end)-->
@@ -124,7 +176,9 @@ export default {
       error: null,
       menuitems,
       forgotPassword: false,
-      email: ""
+      formSignUp: false,
+      formSignIn: true,
+      data: {},
     };
   },
   methods: {
@@ -136,10 +190,20 @@ export default {
         console.log(error);
       }
     },
-     async handleForgotPassword() {
-    
+    async handleForgotPassword() {
+      this.formSignIn = false;
+      this.formSignUp = false;
       this.forgotPassword = !this.forgotPassword;
-      
+    },
+    async handleSignUpClick() {
+      this.forgotPassword = false;
+      this.formSignIn = false;
+      this.formSignUp = !this.formSignUp;
+    },
+    async handleSignInClick() {
+      this.forgotPassword = false;
+      this.formSignIn = !this.formSignIn;
+      this.formSignUp = false;
     },
   },
 };
