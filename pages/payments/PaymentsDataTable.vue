@@ -13,7 +13,7 @@
                 </div>
               </template>
             </v2-table-column>
-            <v2-table-column label="Description" prop="description">
+            <v2-table-column label="Description" prop="description" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
                   {{ scope.row.description | truncate(200) }}
@@ -21,7 +21,7 @@
               </template>
             </v2-table-column>
 
-            <v2-table-column label="Type" prop="payment_type" width="100">
+            <v2-table-column label="Type" prop="payment_type" width="150" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
                   {{ scope.row.payment_type }}
@@ -29,15 +29,29 @@
               </template>
             </v2-table-column>
 
-            <v2-table-column label="Amount" prop="payment_amount" width="100" sortable>
+            <v2-table-column label="Credit" prop="payment_amount" width="100" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
-                  {{ scope.row.payment_amount | numFormat }}
+                  {{ scope.row.payment_amount | numFormat('$0,0.00') }}
+                </div>
+              </template>
+            </v2-table-column>
+            <v2-table-column label="Debit" prop="payment_amount" width="100" sortable>
+              <template slot-scope="scope">
+                <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
+                  {{ scope.row.payment_amount | numFormat('$0,0.00') }}
+                </div>
+              </template>
+            </v2-table-column>
+             <v2-table-column label="Balance" prop="payment_amount" width="150" sortable>
+              <template slot-scope="scope">
+                <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
+                  {{ scope.row.payment_amount | numFormat('$0,0.00') }}
                 </div>
               </template>
             </v2-table-column>
 
-            <v2-table-column label="Currency" prop="payment_currency" width="100">
+            <!--<v2-table-column label="Currency" prop="payment_currency" width="100">
               <template slot-scope="scope">
                 <div class="ml-2 text-center text-xs font-medium text-gray-500 tracking-wider">
                   {{ scope.row.payment_currency }}
@@ -51,7 +65,7 @@
                   {{ scope.row.currency_exchange_rate }}
                 </div>
               </template>
-            </v2-table-column>
+            </v2-table-column>-->
 
             <v2-table-column label="Status" prop="payment_status" width="100">
               <template slot-scope="scope">

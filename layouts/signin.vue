@@ -21,7 +21,7 @@
         <div>
           <div class="sm:mx-auto sm:w-full sm:max-w-md">
             <div class="px-4 sm:rounded-lg sm:px-10">
-              <form v-if="formSignIn" @submit.prevent="login">
+              <form v-if="formSignIn" @submit.prevent="signIn">
                 <input type="hidden" name="remember" value="true" />
                 <div class="mt-10 flex items-center justify-center">
                   <div class="flex items-center">

@@ -51,6 +51,22 @@
                               <Dropdownlist v-model="data.payment_type" @selected_item="handleSelectedInPayment_type" name="payment_type" label="Payment Type" api="payment_type" :selected_value="data.payment_type" />
                             </div>
 
+                             <div class="sm:col-span-6">
+                              <Dropdownlist
+                                v-model="data.payment_credit_debit"
+                                @selected_item="handleSelectedInPayment_credit_debit"
+                                name="payment_creditordebit"
+                                label="Credit / Debit"
+                                :data="{
+                                  data: [
+                                    { code: 'Credit', name: 'Credit' },
+                                    { code: 'Debit', name: 'Debit' },
+                                  ],
+                                }"
+                                :selected_value="data.payment_credit_debit"
+                              />
+                            </div>
+
                             <div class="sm:col-span-6">
                               <label for="name" class="block text-sm font-medium text-gray-700"> Amount </label>
                               <div class="mt-1 rounded-md shadow-sm">
@@ -186,6 +202,10 @@ export default {
     handleSelectedInPayment_Status(data) {
       this.data.payment_status = data;
     },
+    handleSelectedInPayment_credit_debit(data) {
+      this.data.payment_credit_debit = data;
+    },
+    
     handleSelectedInPayment_type(data) {
       this.data.payment_type = data;
     },
