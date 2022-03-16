@@ -35,7 +35,7 @@
                     <input v-model="email" aria-label="Email address" name="email" type="email" value="jessy.s@zynomi.com" required class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-none sm:text-sm border-gray-300" placeholder="Email address" />
                   </div>
                   <div class="-mt-px">
-                    <input v-model="password" aria-label="Password" name="password" type="password" value="admin" required class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-none sm:text-sm border-gray-300" placeholder="Password" />
+                    <input v-model="password" aria-label="Password" name="password" type="password" value="secret" required class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-none sm:text-sm border-gray-300" placeholder="Password" />
                   </div>
                 </div>
 

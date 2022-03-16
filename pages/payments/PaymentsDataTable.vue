@@ -20,7 +20,6 @@
                 </div>
               </template>
             </v2-table-column>
-
             <v2-table-column label="Type" prop="payment_type" width="150" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
@@ -28,25 +27,38 @@
                 </div>
               </template>
             </v2-table-column>
-
-            <v2-table-column label="Credit" prop="payment_amount" width="100" sortable>
+            <v2-table-column label="Cr. or Db." prop="credit_debit" width="100" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
-                  {{ scope.row.payment_amount | numFormat('$0,0.00') }}
+                  {{ scope.row.credit_debit}}
+                </div>
+              </template>
+             </v2-table-column>
+             <v2-table-column label="Currency" prop="payment_currency" width="100" sortable>
+              <template slot-scope="scope">
+                <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
+                  {{ scope.row.payment_currency }}
+                </div>
+              </template>
+             </v2-table-column>
+            <v2-table-column label="Credit" prop="credit" width="150" sortable>
+              <template slot-scope="scope">
+                <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
+                  {{ scope.row.credit | numFormat('$0,0.00') | chkIfZeroDollar}}
                 </div>
               </template>
             </v2-table-column>
-            <v2-table-column label="Debit" prop="payment_amount" width="100" sortable>
+            <v2-table-column label="Debit" prop="debit" width="150" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
-                  {{ scope.row.payment_amount | numFormat('$0,0.00') }}
+                  {{ scope.row.debit | numFormat('$0,0.00') |  chkIfZeroDollar}}
                 </div>
               </template>
             </v2-table-column>
-             <v2-table-column label="Balance" prop="payment_amount" width="150" sortable>
+             <v2-table-column label="Balance" prop="balance" width="150" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
-                  {{ scope.row.payment_amount | numFormat('$0,0.00') }}
+                  {{ scope.row.balance | numFormat('$0,0.00') }}
                 </div>
               </template>
             </v2-table-column>
@@ -135,6 +147,40 @@ export default {
       let n = len === undefined ? 5 : len;
       return s(val).truncate(n).capitalize().value();
     },
+    chkIfCredit(val, row) {
+      //let n = len === undefined ? 5 : len;
+      //return s(val).truncate(n).capitalize().value();
+      if(row.credit_debit == 'Credit')
+      {
+        return row.payment_amount
+      }else
+      {
+        return ''
+      }
+      //console.log(JSON.stringify(row))
+    },
+    chkIfDebit(val, row) {
+      //let n = len === undefined ? 5 : len;
+      //return s(val).truncate(n).capitalize().value();
+      if(row.credit_debit == 'Debit')
+      {
+        return "-" + row.payment_amount
+      }else
+      {
+        return ""
+      }
+      //console.log(JSON.stringify(row))
+    },
+    chkIfZeroDollar(val) {
+      console.log(val)
+      console.log(val == '$0.00')
+      if(val === '$0.00')
+      {
+        return ''
+      }else{
+        return val
+      }
+    },
   },
   methods: {
     async getPayments(page) {
@@ -143,7 +189,7 @@ export default {
         this.loading = false;
         let offset = page == 1 ? 0 : (page - 1) * pageSize;
         offset = isNaN(offset) ? 0 : offset;
-        let api = this.$config.apiURL + 'Payments?limit=' + pageSize + '&skip=' + offset;
+        let api = this.$config.apiURL + 'accountstatement?limit=' + pageSize + '&skip=' + offset;
         if (!this.$_.isEmpty(this.searchCriteria)) {
           api += this.buildSearchQueryCriteria();
         }

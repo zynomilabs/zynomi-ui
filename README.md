@@ -56,3 +56,9 @@ npx prettier --write .
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+18.189.3.157
+5432
+zypress_db
+zypress_user
+zypress_pwd

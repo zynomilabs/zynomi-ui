@@ -53,8 +53,8 @@
 
                              <div class="sm:col-span-6">
                               <Dropdownlist
-                                v-model="data.payment_credit_debit"
-                                @selected_item="handleSelectedInPayment_credit_debit"
+                                v-model="data.credit_debit"
+                                @selected_item="handleSelectedIncredit_debit"
                                 name="payment_creditordebit"
                                 label="Credit / Debit"
                                 :data="{
@@ -63,7 +63,7 @@
                                     { code: 'Debit', name: 'Debit' },
                                   ],
                                 }"
-                                :selected_value="data.payment_credit_debit"
+                                :selected_value="data.credit_debit"
                               />
                             </div>
 
@@ -202,8 +202,8 @@ export default {
     handleSelectedInPayment_Status(data) {
       this.data.payment_status = data;
     },
-    handleSelectedInPayment_credit_debit(data) {
-      this.data.payment_credit_debit = data;
+    handleSelectedIncredit_debit(data) {
+      this.data.credit_debit = data;
     },
     
     handleSelectedInPayment_type(data) {
