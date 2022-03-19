@@ -173,7 +173,7 @@ export default {
     appLogo: process.env.APP_LOGO || 'logo.svg',
     bizAddress: process.env.BIZ_ADDRESS || 'NA',
     apiURL: process.env.REST_END_POINT || 'https://api.zynomi.com/',
-    restEndPoint: process.env.REST_END_POINT || 'http://api.zynomi.com/',
+    restEndPoint: process.env.REST_END_POINT || 'https://api.zynomi.com/',
   },
   privateRuntimeConfig: {
     apiSecret: process.env.API_SECRET

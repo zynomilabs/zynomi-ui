@@ -22,7 +22,7 @@
               addClickEvent="evtUpsertPayments"
             />
             <PaymentsSearch heading="" />
-            <stat-actions :data="stats" class="p-2" />
+            <stat-actions :data="stats" class="p-2" ref="_stat"/>
             <!--Datatable action buttons (Start)-->
             <PaymentsDataTableActionButtons />
             <!--Datatable action buttons (End)-->
@@ -55,6 +55,7 @@ import PaymentsSearch from '@/pages/payments/PaymentsSearch.vue';
 import PaymentsDataTable from '@/pages/payments/PaymentsDataTable.vue';
 import PaymentsDataTableActionButtons from '@/pages/payments/PaymentsDataTableActionButtons.vue';
 import stats from '@/store/stats-payments.json';
+var numeral = require("numeral");
 
 export default {
   layout: 'app',
@@ -70,10 +71,27 @@ export default {
   data() {
     return {
       stats,
+      ds: {},
     };
   },
-  methods: {},
-  created() {},
+  methods: {
+    async getStats() {
+      //alert(data)
+      //console.log(JSON.stringify(data))
+      let api = this.$config.apiURL + 'query/execute';
+      const resp  = await this.$axios.post(api,{
+                              "sql" : "SELECT id, payment_date, balance FROM zypress.account_statement WHERE id IN (SELECT Min(id) FROM zypress.account_statement) OR id IN (SELECT Max(id) FROM zypress.account_statement)"
+                          });
+      this.stats.data[0].value = numeral(resp.data[1].balance).format("$0,0.00")
+      this.stats.data[3].value = numeral(resp.data[0].balance).format("$0,0.00")
+      this.$refs._stat.data=this.stats
+    },
+  },
+  created() {
+    this.$nuxt.$on('evtPaymentsData', (data) => {
+      this.getStats()
+    });
+  },
   beforeDestroy() {},
 };
 </script>

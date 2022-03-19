@@ -20,7 +20,7 @@
                 </div>
               </template>
             </v2-table-column>
-            <v2-table-column label="Type" prop="payment_type" width="150" sortable>
+            <!--<v2-table-column label="Type" prop="payment_type" width="150" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-left text-xs font-medium text-gray-500 tracking-wider">
                   {{ scope.row.payment_type }}
@@ -40,7 +40,7 @@
                   {{ scope.row.payment_currency }}
                 </div>
               </template>
-             </v2-table-column>
+             </v2-table-column>-->
             <v2-table-column label="Credit" prop="credit" width="150" sortable>
               <template slot-scope="scope">
                 <div class="ml-2 text-right pr-2 text-xs font-medium text-gray-500 tracking-wider">
@@ -135,6 +135,8 @@ export default {
       searchCriteria: {},
       currentPage: 1,
       total: 9,
+      opening: {},
+      closing: {},
       loading: false,
       paginationInfo: {
         text: "<div class='flex-1'><span class='ml-14 text-sm font-bold text-gray-800'>Total of <strong>198</strong>, <strong>25</strong> per page</span></div>",
@@ -183,6 +185,16 @@ export default {
     },
   },
   methods: {
+    async getOpeningBalance() {
+      
+      let api = this.$config.apiURL + 'accountstatement?sort=id asc&limit=1';
+        if (!this.$_.isEmpty(this.searchCriteria)) {
+          api += this.buildSearchQueryCriteria();
+        }
+        let opening = (await $axios.$ge(api)).data
+        $nuxt.$emit('evtPaymentsData', opening)
+        
+    },
     async getPayments(page) {
       try {
         this.currentPage = page;
@@ -197,6 +209,10 @@ export default {
         console.log(api);
         const { data } = await this.$axios.get(api);
         this.total = data.info.total;
+        //alert(data)
+        //alert("Publishing event")
+        $nuxt.$emit('evtPaymentsData', api);
+        //alert("Published event")
         //Initiate explicit timeout
         setTimeout(() => {
           this.paginationInfo = {
@@ -206,7 +222,10 @@ export default {
           this.$refs.mydt.updateScrollbar(true);
           //v2-table__pagination
         }, 10);
-        return (this.Payments = data);
+        
+        return (
+          this.Payments = data
+          );
       } catch (error) {
         console.log(error);
       }
