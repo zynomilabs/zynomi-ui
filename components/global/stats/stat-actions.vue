@@ -1,7 +1,12 @@
 <template>
 <div class="bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-4 sm:gap-px">
   <div v-for="(item, index) in this.items.data" class="relative group bg-white border-gray-200 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-    <div>
+    <div v-if="item.img">
+      <span class="rounded-lg inline-flex p-3 ring-4 ring-white" :class="item.css_class">
+        <img :src="item.img" width="30" height="30" :alt="item.title" />
+      </span>
+    </div>
+    <div v-else>
       <span class="rounded-lg inline-flex p-3 ring-4 ring-white" :class="item.css_class">
         <!-- Heroicon name: outline/clock -->
        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -9,7 +14,7 @@
             v-for="(path,index) in item.paths"
             :key="index"
             stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke-linejoin="round" 
             stroke-width="2"
             :d="path"
         />

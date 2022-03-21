@@ -46,9 +46,8 @@
             <div class="flex-1 flex xl:overflow-hidden">
                      <!-- Main content (start)-->
                     <div class="flex-1 xl:overflow-y-auto">
-                    <page-header title="Statement Summary" guide="Available Credit includes purchases that have been authorized but have not yet posted to your account"/> 
+                    <page-header title="Big Bazzar" guide="Real-time bot analytics to enhance and enrich your automation initiatives" showdate="true"/> 
                     <stat-actions :data="stats" class="p-2"/> 
-                    
                     </div>
                     <!-- Main content (End)-->
             </div>
@@ -74,7 +73,7 @@
      */
     import LeftNavBar from "@/components/LeftNavBar.vue";
     import LeftNavProfileBar from "@/components/LeftNavProfileBar.vue";
-    import stats from "@/store/stats-payments.json";
+    import stats from "@/store/stats-bot-analytics.json";
 
     export default {
         layout: "app",
