@@ -16,7 +16,7 @@
           <article>
             <BotPageHeader
               heading="Bot Data Management"
-              showbutton="false"
+              showbutton="true"
               guide="Search
                                 for Bot data"
               addClickEvent="evtUpsertBot"

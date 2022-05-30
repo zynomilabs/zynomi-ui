@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bg-gray-100 border rounded shadow">
-      <div class="flex">
+      <div class="flex" style="height:400px">
         <client-only placeholder="Codemirror Loading...">
           <codemirror
             ref="cmEditor"

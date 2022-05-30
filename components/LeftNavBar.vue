@@ -66,7 +66,8 @@
         </div>
         <div class="mt-5 flex-1 h-0 overflow-y-auto">
           <nav class="px-2 space-y-1">
-            <a v-for="(menu, index) in menuitems.leftnav" :key="menu.link" :href="menu.link" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <a v-for="(menu, index) in menuitems.leftnav" :key="menu.link" :href="menu.link" 
+            class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
               <svg class="text-gray-300 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="menu.icon" />
               </svg>
@@ -104,7 +105,8 @@
                                 :key="menu.link"
                                 :href="menu.link"
                                 v-if="!menu.hidden"
-                                class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group  group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                                class="hover:text-gray-900 hover:bg-gray-50 group  group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                                :class="[menu.selected == true ? 'text-gray-900 bg-gray-200' : 'text-gray-700']"
                             >
                                 <svg
                                     class="text-gray-800 mr-4 flex-shrink-0 h-6 w-6"

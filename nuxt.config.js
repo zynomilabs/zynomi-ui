@@ -5,7 +5,7 @@ export default {
   ssr: false,
   components: true,
   server: {
-    port: process.env.APP_PORT || '3000', // default: 3000
+    port: process.env.APP_PORT || '7000', // default: 3000
   },
   generate: {
     fallback: true

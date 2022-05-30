@@ -33,3 +33,7 @@
 .descending-caret {
   @apply zyno-sort-descending;
 }
+
+.CodeMirror {
+  @apply max-h-full;
+}

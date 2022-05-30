@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "name": "OCR",
+            "status": "Active",
+            "last_modified": "4 days ago",
+            "owner": "Amanda Parker"
+        },
+        {
+            "name": "Data Cleansing",
+            "status": "Active",
+            "last_modified": "4 days ago",
+            "owner": "Amanda Parker"
+        },
+        {
+            "name": "Feature Engineering",
+            "status": "Active",
+            "last_modified": "4 days ago",
+            "owner": "Amanda Parker"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "menus": [
+        {
+            "hidden": false,
+            "selected": true,
+            "img": "",
+            "icons": [],
+            "title": "Resume Screening",
+            "description": "Download resume from newtwork drive and Email attachment, run OCR to extract profile data then run ML pipeline",
+            "link": "/bots"
+        },
+        {
+            "hidden": false,
+            "selected": false,
+            "img": "",
+            "icons": [],
+            "title": "Inventory Monitoring",
+            "description": "A process is a combination of steps that implement a business process.",
+            "link": "/processes"
+        },
+        {
+            "hidden": false,
+            "selected": false,
+            "img": "",
+            "icons": [],
+            "title": "Invoice Processing",
+            "description": "In each step, a robot is run one or multiple times.",
+            "link": "/bots"
+        },
+        {
+            "hidden": false,
+            "selected": false,
+            "img": "",
+            "icons": [],
+            "title": "Database Back-up",
+            "description": "In each step, a robot is run one or multiple times.",
+            "link": "/bots"
+        }
+    ]
+}

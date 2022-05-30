@@ -1,0 +1,76 @@
+{
+    "data": [
+        {
+            "name": "Database Back-up",
+            "short_description": "Opening balance at the beginning of the statement period selected.",
+            "requirements": "Opening balance at the beginning of the statement period selected.",
+            "child": [
+                {
+                    "name": "Download metadata and data",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker"
+                },
+                {
+                    "name": "Upload to S3 bucket",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker"
+                }
+            ]
+        },
+        {
+            "name": "Resume Screening",
+            "short_description": "Opening balance at the beginning of the statement period selected.",
+            "requirements": "Opening balance at the beginning of the statement period selected.",
+            "child": [
+                {
+                    "name": "OCR",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker",
+                    "runnable": true
+                },
+                {
+                    "name": "Data Cleansing",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker",
+                    "runnable": true
+                },
+                {
+                    "name": "Feature Engineering",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker",
+                    "runnable": true
+                }
+            ]
+        },
+        {
+            "name": "Invoice Processing",
+            "short_description": "Opening balance at the beginning of the statement period selected.",
+            "requirements": "Opening balance at the beginning of the statement period selected.",
+            "child": [
+                {
+                    "name": "Downlaad from FTP location",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker"
+                },
+                {
+                    "name": "OCR",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker"
+                },
+                {
+                    "name": "Post to SAP Accounts Payable",
+                    "status": "Active",
+                    "last_modified": "4 days ago",
+                    "owner": "Amanda Parker"
+                }
+            ]
+        }
+    ]
+}

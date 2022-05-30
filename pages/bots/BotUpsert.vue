@@ -3,7 +3,7 @@
     <div class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0" aria-hidden="true"></div>
       <div class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
-        <div class="w-screen max-w-xl">
+        <div class="w-screen max-w-6xl">
           <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
             <div class="flex-1 h-0 overflow-y-auto">
               <header class="space-y-1 py-6 px-4 bg-gray-200 sm:px-4">
@@ -28,6 +28,13 @@
                       <div class="sm:overflow-hidden">
                         <div class="bg-white space-y-6">
                           <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                            <div class="sm:col-span-6">
+                                  <Dropdownlist v-model="data.process"
+                                      @selected_item="handleSelectedInProcess"
+                                      name="process" label="Process Name"
+                                      :data="{'data' : [{'code' : 'Inventory Monitoring', 'name':'Inventory Monitoring'},{'code' : 'Invoice Processing', 'name':'Invoice Processing'},{'code' : 'Database Back-up', 'name':'Database Back-up'},{'code' : 'Resume Screening', 'name':'Resume Screening'}]}"
+                                      :selected_value="data.is_enabled" />
+                              </div>
                             <div class="sm:col-span-6">
                               <label for="name" class="block text-sm font-medium text-gray-700"> Name </label>
                               <div class="mt-1 rounded-md shadow-sm">
@@ -69,14 +76,25 @@
                               </div>
                             </div>
                             <!--Tab (Ends)-->
-                            <div class="sm:col-span-6">
-                              <label for="bashCommand" class="block text-sm font-medium text-gray-700"> Bash Command </label>
+                                      <div class="sm:col-span-6">
+                              <label for="name" class="block text-sm font-medium text-gray-700"> Bash command </label>
+
                               <div class="mt-1 rounded-md shadow-sm">
-                                <input v-model="data.command" type="text" id="bashCommand" name="bashCommand" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                                <client-only placeholder="Codemirror Loading...">
+                                  <codemirror ref="bashEditor" :value="code" :options="cmOptions" @ready="onCmReady" @focus="onCmFocus" @input="onCmCodeChange" />
+                                </client-only>
                               </div>
                             </div>
+                             <!-- Schedule (Start)-->
+                           <div class="sm:col-span-6">
+                              <label for="name" class="block text-sm font-medium text-gray-700"> Cron </label>
+                              <div class="mt-1 rounded-md shadow-sm">
+                                <input v-model="data.cron" type="text" id="cron" name="cron" autocomplete="cron" class="flex-1 focus:ring-green-500 focus:border-green-500 block w-full min-w-0 sm:text-sm border-gray-300" />
+                              </div>
+                            </div>
+                            <!-- Schedule (End)-->
                             <!-- Checkboxes (Start)-->
-                            <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5 sm:col-span-6">
+                            <div class="pt-2 space-y-4 sm:pt-2 sm:space-y-4 sm:col-span-6">
                               <div>
                                 <h3 class="text-lg leading-6 font-medium text-gray-900">Notifications</h3>
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">We'll always let you know the execution events, and can you pick what events you want to be the watcher.</p>
@@ -129,9 +147,7 @@
                               </div>
                             </div>
                             <!-- Checkboxes (End)-->
-                            <!-- Schedule (Start)-->
-                           <Scheduler/>
-                            <!-- Schedule (End)-->
+                           
                           </div>
                         </div>
                       </div>
@@ -181,6 +197,17 @@ export default {
        
       },
       api: '',
+      componentKey: 0,
+      code: 'python3 ./bot.py',
+      cmOptions: {
+        tabSize: 4,
+        mode: 'text/x-sh',
+
+        theme: 'rubyblue',
+        lineNumbers: true,
+        line: true,
+        // more CodeMirror options...
+      },
     };
   },
   methods: {
@@ -230,8 +257,40 @@ export default {
     handleSelectedInMarkAsDelete(data) {
       this.data.mark_as_delete = data;
     },
+    async closeProcessesPanel() {
+      this.data = {};
+      this.isUpsertProcessesVisible = !this.isUpsertProcessesVisible;
+    },
+    handleSelectedInStatus(data) {
+      this.data.is_enabled = data;
+    },
+    handleSelectedInMarkAsDelete(data) {
+      this.data.mark_as_delete = data;
+    },
+    forceRerender() {
+      this.componentKey += 1;
+    },
+    onCmReady(cm) {
+      console.log('the editor is ready!', cm);
+    },
+    onCmFocus(cm) {
+      console.log('the editor is focused!', cm);
+    },
+    onCmCodeChange(newCode) {
+      console.log('this is new code', newCode);
+      this.code = newCode;
+    },
+    pageChange() {},
+    handleSelectChange() {},
+    clear() {
+      this.code = '';
+    },
   },
-  computed: {},
+  computed: {
+    codemirror() {
+      //return this.$refs.cmEditor.codemirror
+    },
+  },
   mounted() {},
   created() {
     this.$nuxt.$on('evtUpsertBot', (data) => {
@@ -257,3 +316,8 @@ export default {
   },
 };
 </script>
+<style>
+.CodeMirror {
+  height:auto;
+}
+</style>

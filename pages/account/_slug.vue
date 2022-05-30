@@ -39,7 +39,7 @@
                   <div class="space-y-8 divide-y divide-gray sm:space-y-5 pt-2">
                     <div class="md:flex md:items-center md:justify-between">
                       <h2 class="text-xl font-medium text-blue-gray-900">Profile information</h2>
-                      <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
+                      <p class="mt-1 max-w-2xl text-sm text-gray-500">dsadas</p>
                       <div class="mt-4 flex md:mt-0 md:ml-4">
                         <button @click="$nuxt.$emit('evtUpsertUsers')" type="submit" class="bg-green-600 border border-transparent shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600">Edit</button>
                       </div>
